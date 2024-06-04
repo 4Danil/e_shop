@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+
+{% load custom_tags %}
+{% get_categories as categories %}
+{% user_carts request as carts %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet"
+          href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' %}">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="{% static 'style.css' %}"/>
+
+    <!-- custom js file link  -->
+    <script src="{% static 'js/script.js' %}" defer></script>
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+
+<header class="header">
+    <a href="{% url 'home' %}" class="logo"> LOGO </a>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="{% url 'home' %}"
+                   class="nav-item nav-link {% if request.path == '/home/' %} active {% endif %}">home</a></li>
+            <li><a href="{% url 'products' %}" class="nav-item nav-link active">products +</a>
+                <ul>
+                    {% for category in categories %}
+                    <li>
+                        <a href="{% url 'category_products' category.pk %}"
+                           class="nav-item nav-link {% if request.path == '/product/' %} active {% endif %}">{{ category }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li><a href="#" class="nav-item nav-link active">pages +</a>
+                <ul>
+                    <li><a href="{% url 'about' %}"
+                           class="nav-item nav-link {% if request.path == '/about/' %} active {% endif %}">about</a>
+                    </li>
+                    <li><a href="{% url 'blog' %}"
+                           class="nav-item nav-link {% if request.path == '/blog/' %} active {% endif %}">blogs</a></li>
+                </ul>
+            </li>
+            <li><a href="#" class="nav-item nav-link active">account +</a>
+                <ul>
+
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="{% url 'login' %}"
+                           class="nav-item nav-link {% if request.path == '/login/' %} active {% endif %}">login</a>
+                    </li>
+                    <li><a href="{% url 'register' %}"
+                           class="nav-item nav-link {% if request.path == '/register/' %} active {% endif %}">register</a>
+                    </li>
+                    {% else %}
+                    <li><a href="{% url 'logout' %}"
+                           class="nav-item nav-link {% if request.path == '/logout/' %} active {% endif %}">logout</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li>
+            <li><a href="{% url 'wishlist' %}"
+                   class="nav-item nav-link {% if request.path == '/wishlist/' %} active {% endif %}">Wishlist</a></li>
+
+
+
+        </ul>
+    </nav>
+
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <a href="{% url 'cart' %}" class="fas fa-shopping-cart ">{% for cart in carts %} {% endfor %}</a>
+    </div>
+
+    <form method="get" role="search" action="{% url 'search' %}" class="search-form">
+        <input type="search" name="search" placeholder="search here..." id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+
+</header>
+
+<script src="{% static 'script.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+
+</body>
+</html>
+
+
+
+
+{% block content %}
+{% endblock content %}
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="{% url 'home' %}"> <i class="fas fa-angle-right"></i>home</a>
+            <a href="{% url 'about' %}"> <i class="fas fa-angle-right"></i>about</a>
+            <a href="{% url 'products' %}"> <i class="fas fa-angle-right"></i>product</a>
+            <a href="{% url 'blog' %}"> <i class="fas fa-angle-right"></i>daily blog</a>
+        </div>
+
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+        </div>
+
+
+    </div>

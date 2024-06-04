@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}
+Cart
+{% endblock title %}
+
+
+{% block content %}
+<section class="heading">
+    <h1>shopping cart</h1>
+    <p><a href="{% url 'home' %}">home</a> >> Cart </p>
+</section>
+
+<!-- header section -->
+
+<!-- cart section starts  -->
+
+<section class="shopping-cart">
+    {% if carts %}
+    <h1 class="title"> your products </h1>
+    {% else %}
+    <h1 class="title"> empty cart </h1>
+
+    {% endif %}
+
+    <div class="box-container">
+        {% for cart in carts %}
+        <div class="box">
+            <a href="{% url 'cart_remove' cart.id %}"
+               class="fas fa-times" data-cart-id="{{ cart.id }}">
+            </a>
+            <img src="{{ cart.product.image.url }}" alt="">
+            <div class="content">
+                <h3>{{ cart.product.name }}</h3>
+                <form action="#" method="post">
+                    <span>quantity:</span>
+                    <div class="input-group">
+                        <a href="{% url 'decrease' cart.product.pk %}" id="decrement">-</a>
+                        <input type="number" id="input" value="{{ cart.quantity }}" readonly>
+                        <a href="{% url 'increase' cart.product.pk %}">+</a>
+                        {% csrf_token %}
+                    </div>
+                </form>
+
+                <div class="price"> ${{ cart.products_price }} <span></span></div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    {% if carts %}
+    <h1 class="title">checkout cart</h1>
+    <div class="cart-total">
+        <h3>total quantity : <span>{{ carts.total_quantity }}</span></h3>
+        <h3>total price : <span>${{ carts.total_price }}</span></h3>
+        <a href="#" class="btn">
+            proceed to checkout
+        </a>
+    </div>
+    {% endif %}
+
+</section>
+
+{% endblock content %}

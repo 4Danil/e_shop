@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Login
+{% endblock title %}
+
+<!-- header section starts  -->
+{% block content %}
+
+<!-- header section ends -->
+
+<!-- header section  -->
+
+<section class="heading">
+    <h1>account</h1>
+    <p> <a href="{% url 'home' %}">home</a> >> login </p>
+</section>
+
+<!-- header section -->
+
+<!-- login form section starts -->
+
+<section class="login-form">
+
+    <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <h3>user login</h3>
+        {% if form.non_field_errors %}
+        <p>{{ form.non_field_errors }}</p>
+        {% endif %}
+        <div class="inputBox">
+            <span class="fas fa-user"></span>
+            {{ form.username }}
+        </div>
+        <div class="inputBox">
+            <span class="fas fa-lock"></span>
+            {{ form.password }}
+        </div>
+        {{ form.errors }}
+        <input type="submit" value="sign in" class="btn">
+        <a href="{% url 'register' %}" class="btn">create an account</a>
+    </form>
+
+</section>
+{% endblock content %}
+<!-- login form section ends -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer section starts  -->
+
+<!-- footer section ends -->

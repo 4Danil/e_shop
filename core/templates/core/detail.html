@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+{{ product.name }}
+{% endblock title %}
+
+
+{% block content %}
+
+<section class="heading">
+    <h1>our products</h1>
+    <p><a href="{% url 'home' %}">home</a> >> Product details </p>
+</section>
+
+
+
+<section class="products">
+
+    <h1 class="title"> {{product.name}} </h1>
+
+
+    <div class="box-container ">
+        <div class="box">
+            <div class="image">
+                <div class="icons">
+                    <a href="{% url 'cart_add' product.slug %}" class="fas fa-shopping-cart"></a>
+                </div>
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="">
+                {% endif %}
+            </div>
+            <div class="content">
+                <p>{{ product.description }}</p>
+                <div class="price">${{ product.price }} <span>${{ product.discount }}</span></div>
+            </div>
+        </div>
+</section>
+{% endblock content %}
+
+

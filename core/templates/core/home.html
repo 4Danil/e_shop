@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Home
+{% endblock title %}
+
+
+
+
+<!-- header section starts  -->
+{% block content %}
+<section class="home">
+
+    <div class="slide active" style="background: url({% static 'images/home-bg-1.png' %}) no-repeat;">
+        <div class="content">
+            <span>protect your eyes</span>
+            <h3>upto 50% off</h3>
+            <a href="{% url 'products' %}" class="btn">shop now</a>
+        </div>
+    </div>
+
+    <div class="slide" style="background: url({% static 'images/home-bg-2.png' %}) no-repeat;">
+        <div class="content">
+            <span>protect your eyes</span>
+            <h3>upto 50% off</h3>
+            <a href="{% url 'products' %}" class="btn">shop now</a>
+        </div>
+    </div>
+
+    <div class="slide" style="background: url({% static 'images/home-bg-3.png' %}) no-repeat;">
+        <div class="content">
+            <span>protect your eyes</span>
+            <h3>upto 50% off</h3>
+            <a href="{% url 'products' %}" class="btn">shop now</a>
+        </div>
+    </div>
+
+    <div id="next-slide" onclick="next()" class="fas fa-angle-right"></div>
+    <div id="prev-slide" onclick="prev()" class="fas fa-angle-left"></div>
+
+</section>
+
+<!-- home section ends     -->
+
+<!-- banner section starts  -->
+
+<section class="banner">
+
+    <div class="box">
+        <img src="{% static 'images/banner-1.jpg' %}" alt="">
+        <div class="content">
+            <span>special offer</span>
+            <h3>upto 50% off</h3>
+            <a href="{% url 'products' %}" class="btn">shop now</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="{% static 'images/banner-2.jpg' %}" alt="">
+        <div class="content">
+            <span>special offer</span>
+            <h3>upto 50% off</h3>
+            <a href="{% url 'products' %}" class="btn">shop now</a>
+        </div>
+    </div>
+
+    <div class="box">
+        <img src="{% static 'images/banner-3.jpg' %}" alt="">
+        <div class="content">
+            <span>special offer</span>
+            <h3>upto 50% off</h3>
+            <a href="{% url 'products' %}" class="btn">shop now</a>
+        </div>
+    </div>
+
+</section>
+{% endblock content %}
+<!-- banner section ends -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html"> <i class="fas fa-angle-right"></i> home</a>
+            <a href="products.html"> <i class="fas fa-angle-right"></i> products</a>
+            <a href="about.html"> <i class="fas fa-angle-right"></i> about</a>
+            <a href="blogs.html"> <i class="fas fa-angle-right"></i> blogs</a>
+            <a href="contact.html"> <i class="fas fa-angle-right"></i> contact</a>
+            <a href="login.html"> <i class="fas fa-angle-right"></i> login</a>
+            <a href="register.html"> <i class="fas fa-angle-right"></i> register</a>
+            <a href="cart.html"> <i class="fas fa-angle-right"></i> cart</a>
+        </div>
+
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook </a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter </a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
+        </div>
+    </div>
+
+    <div class="credit"> created by <span>mr .web designer</span> | all rights reserved </div>
+
+</section>
+
+<!-- footer section ends -->
+

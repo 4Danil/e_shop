@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Glasses
+{% endblock title %}
+
+
+<!-- header section starts  -->
+{% block content %}
+
+<!-- header section ends -->
+
+<!-- header section  -->
+
+<section class="heading">
+    <h1>our products</h1>
+    <p><a href="{% url 'home' %}">home</a> >> Products </p>
+</section>
+
+<!-- header section -->
+
+<!-- prodcuts section starts  -->
+
+<section class="products">
+
+    <h1 class="title"> Products </h1>
+
+
+    <div class="box-container">
+        {% for product in products %}
+        <div class="box">
+            <div class="image">
+                <div class="icons">
+                    <a href="{% url 'cart_add' product.slug %}" class="fas fa-shopping-cart"></a>
+                    <a href="{% url 'add-to-wishlist' product.id %}" class="fas fa-share"></a>
+                    {% csrf_token %}
+                    <a href="{{ product.get_absolute_url }}" class="fas fa-eye"></a>
+                </div>
+                {% if product.image %}
+                <img src="{{ product.image.url }}" alt="">
+                {% endif %}
+            </div>
+            <div class="content">
+                <h3>{{ product.name }}</h3>
+                <div class="price">${{ product.price }} <span>${{ product.discount }}</span></div>
+            </div>
+        </div>
+        {% endfor %}
+
+</section>
+{% endblock content %}
+
+<!-- prodcuts section ends -->
+
+
+<!-- footer section starts  -->
+
+
+
+
+<!-- footer section ends -->
+

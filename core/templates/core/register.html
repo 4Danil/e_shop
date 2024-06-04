@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Register
+{% endblock title %}
+<!-- header section starts  -->
+
+{% block content %}
+
+<!-- header section ends -->
+
+<!-- header section  -->
+
+<section class="heading">
+    <h1>account</h1>
+    <p> <a href="{% url 'home' %}">home</a> >> register </p>
+</section>
+
+<!-- header section -->
+
+<!-- header section -->
+
+<!-- register form section starts -->
+
+<section class="register-form">
+
+    <form action="{% url 'register' %}" method="post">
+        {% csrf_token %}
+        <h3>register now</h3>
+        <div class="inputBox">
+            <span class="fas fa-user"></span>
+            {{ form.username }}
+        </div>
+
+        <div class="inputBox">
+            <span class="fas fa-lock"></span>
+            {{ form.password1 }}
+        </div>
+        <div class="inputBox">
+            <span class="fas fa-lock"></span>
+            {{ form.password2 }}
+        </div>
+        <input type="submit" value="sign up" class="btn">
+        <a href="{% url 'login' %}" class="btn">already have an account</a>
+    </form>
+
+</section>
+{% endblock content %}
+<!-- register form section ends -->
+
+
+

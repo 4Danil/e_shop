@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Blogs
+{% endblock title %}
+
+
+
+<!-- header section  -->
+{% block content %}
+<section class="heading">
+    <h1>our blogs</h1>
+    <p> <a href="{% url 'home' %}">home</a> >> blogs </p>
+</section>
+
+<!-- header section -->
+
+<!-- blogs section starts  -->
+
+<section class="blogs">
+
+    <h1 class="title">our team blog</h1>
+
+    <div class="box-container">
+        {% for blog in blogs %}
+        <div class="box">
+            <div class="image">
+                {% if blog.image %}
+                <img src="{{ blog.image.url }}" alt="">
+                {% endif %}
+            </div>
+            <div class="content">
+                <h3>{{ blog.title }}</h3>
+                <p>{{ blog.short_description }}</p>
+                <div class="icons">
+                    <a href="#"> <i class="fas fa-user"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</section>
+{% endblock content %}
+
+<!-- blogs section ends -->
+
+
+

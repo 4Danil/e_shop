@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Cart
+{% endblock title %}
+
+
+{% block content %}
+<section class="heading">
+    <p><a href="{% url 'home' %}">home</a> >> Wishlist </p>
+</section>
+
+
+<section class="products">
+
+    <h1 class="title"> Products </h1>
+
+
+    <div class="box-container">
+        {% for item in wish_items %}
+        <div class="box">
+            <div class="image">
+                <div class="icons">
+                    <a href="{% url 'cart_add' item.product.slug %}" class="fas fa-shopping-cart"></a>
+
+                </div>
+                {% if item.product.image %}
+                <img src="{{ item.product.image.url }}" alt="">
+                {% endif %}
+            </div>
+            <div class="content">
+                <h3>{{ item.product.name }}</h3>
+
+                <form action="" method="post">
+                    <span>quantity:</span>
+                    <p>{{ item.quantity }}</p>
+                </form>
+                <div class="price">${{ item.get_item_price }}</div>
+                <a href="{% url 'wishlist_remove' item.id %}">
+                    <button type="button" class="btn btn-primary"><span class="bi bi-trash"></span>Delete Product</button>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+
+</section>
+
+
+{% endblock content %}
