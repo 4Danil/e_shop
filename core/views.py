@@ -47,7 +47,7 @@ def addToWishlist(request, product_id):
         else:
             WishItem.objects.create(user=request.user, product=product, quantity=1)
 
-        return redirect(request.META['HTTP_REFERER'])
+    return redirect(request.META['HTTP_REFERER'])
 
 
 def wishlist_remove(request, wishlist_id):
