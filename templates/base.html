@@ -50,7 +50,8 @@
                     {% for category in categories %}
                     <li>
                         <a href="{% url 'category_products' category.pk %}"
-                           class="nav-item nav-link {% if request.path == '/product/' %} active {% endif %}">{{ category }}</a>
+                           class="nav-item nav-link {% if request.path == '/product/' %} active {% endif %}">{{ category
+                            }}</a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -85,7 +86,6 @@
                    class="nav-item nav-link {% if request.path == '/wishlist/' %} active {% endif %}">Wishlist</a></li>
 
 
-
         </ul>
     </nav>
 
@@ -107,8 +107,6 @@
 
 </body>
 </html>
-
-
 
 
 {% block content %}
@@ -137,5 +135,6 @@
             <a href="#"> <i class="fab fa-instagram"></i> instagram </a>
         </div>
 
-
     </div>
+
+</section>
